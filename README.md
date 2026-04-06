@@ -5,36 +5,6 @@ It includes analysis text, key numeric outputs (epochs/loss/accuracies), and all
 
 ## Analysis
 
-### AI600 – Deep Learning | Assignment 3
-
-# AI600 – Deep Learning | Assignment 3
-## Programming Component
-
-###
-> **Author:** Muhammad Sami Ul Basit
-> **Roll No:** 25280025
-
-
-### Contents
-1. [Task 1A – Standard MNIST CNN](#task1a)
-2. [Task 1B – Colored MNIST (C-MNIST)](#task1b)
-3. [Task 2A – Transfer Learning on STL-10](#task2a)
-4. [Task 2B – GradCAM Visualisation](#task2b)
-
-> **Note:** All datasets are downloaded automatically on first run.
-> C-MNIST `.pt` files must be placed in the same directory as this notebook.
-
-### 0. Imports and Environment Setup
-
-## 0. Imports and Environment Setup
-
-### Shared Training Utilities
-
-## Shared Training Utilities
-
-### <a id='task1a'></a>
-
-<a id='task1a'></a>
 ## Task 1A – Standard MNIST CNN
 
 **Objective:** Design a compact CNN (≤ 3 conv layers, ≤ 2 FC layers, ≤ 50 k parameters),
@@ -42,21 +12,11 @@ train it on MNIST with Adam + CrossEntropyLoss, and analyse the learned filters.
 
 ### 1A-1: Data Loading
 
-### 1A-1: Data Loading
-
-### 1A-2: Model Architecture
-
 ### 1A-2: Model Architecture
 
 ### 1A-3: Training
 
-### 1A-3: Training
-
 ### 1A-4: Learning Curves
-
-### 1A-4: Learning Curves
-
-### Analytical Question 1.1 – Overfitting, underfitting, or good generalisation?
 
 **Analytical Question 1.1 – Overfitting, underfitting, or good generalisation?**
 
@@ -71,10 +31,6 @@ work together to keep the model from memorising the training set.
 
 ### 1A-5: First-Layer Filter Visualisation
 
-### 1A-5: First-Layer Filter Visualisation
-
-### Analytical Question 1.2 – What are the filters detecting?
-
 **Analytical Question 1.2 – What are the filters detecting?**
 
 Even with only 3×3 kernels, we can identify rudimentary visual patterns in the filters
@@ -88,9 +44,6 @@ are consistent with what is known about early convolutional layers in well-train
 they learn to detect basic local structure (edges, textures, orientations) that higher
 layers then combine into class-discriminative representations.
 
-### <a id='task1b'></a>
-
-<a id='task1b'></a>
 ## Task 1B – Colored MNIST (C-MNIST)
 
 **Objective:** Adapt the MNIST CNN for 3-channel RGB input, train on biased C-MNIST,
@@ -98,25 +51,13 @@ then evaluate on both the biased and unbiased test sets to observe shortcut lear
 
 ### 1B-1: Data Loading
 
-### 1B-1: Data Loading
-
 ### 1B-2: Visualise the Colour-Digit Bias
-
-### 1B-2: Visualise the Colour-Digit Bias
-
-### 1B-3: Model – RGB Adaptation
 
 ### 1B-3: Model – RGB Adaptation
 
 ### 1B-4: Training on Biased C-MNIST
 
-### 1B-4: Training on Biased C-MNIST
-
 ### 1B-5: Evaluation on Both Test Sets
-
-### 1B-5: Evaluation on Both Test Sets
-
-### Analytical Question 1.3 – Why the large drop on the unbiased test set?
 
 **Analytical Question 1.3 – Why the large drop on the unbiased test set?**
 
@@ -144,8 +85,6 @@ collapses.  This is a canonical instance of **shortcut learning**: the network e
 spurious correlation present in the training distribution rather than learning the causal
 feature (digit shape) that generalises to new distributions.
 
-### Analytical Question 1.4 – Training strategies to force shape learning
-
 **Analytical Question 1.4 – Training strategies to force shape learning**
 
 Several approaches can discourage shortcut learning on colour:
@@ -171,24 +110,13 @@ Several approaches can discourage shortcut learning on colour:
    and negate its gradient before it flows into the shared backbone (gradient reversal layer).
    This explicitly removes colour information from the learned representation.
 
-### <a id='task2a'></a>
-
-<a id='task2a'></a>
 ## Task 2A – Transfer Learning: Fine-tuning ResNet-18 on STL-10
 
 ### 2A-1: Data Loading – STL-10
 
-### 2A-1: Data Loading – STL-10
-
-### 2A-2: Load Pre-trained ResNet-18 and Freeze Backbone
-
 ### 2A-2: Load Pre-trained ResNet-18 and Freeze Backbone
 
 ### 2A-3: Training the Classification Head
-
-### 2A-3: Training the Classification Head
-
-### Analytical Question 2.1 – Why freeze the backbone?
 
 **Analytical Question 2.1 – Why freeze the backbone?**
 
@@ -213,24 +141,13 @@ there are far more parameters than needed to explain the small training distribu
 keeping the backbone frozen, we effectively use it as a fixed feature extractor and only
 teach the last layer the STL-10 class boundaries.
 
-### <a id='task2b'></a>
-
-<a id='task2b'></a>
 ## Task 2B – Visualising Decisions with GradCAM
 
 ### 2B-1: GradCAM Implementation
 
-### 2B-1: GradCAM Implementation
-
-### 2B-2: Collect 4 Test Images (2 correct, 2 incorrect)
-
 ### 2B-2: Collect 4 Test Images (2 correct, 2 incorrect)
 
 ### 2B-3: Generate and Display GradCAM Heatmaps
-
-### 2B-3: Generate and Display GradCAM Heatmaps
-
-### Analytical Question 2.2 – What do the correct-prediction heatmaps show?
 
 **Analytical Question 2.2 – What do the correct-prediction heatmaps show?**
 
@@ -243,8 +160,6 @@ This is the expected behaviour of a well-trained network: the model has learned 
 class-discriminative features (the shape of wings, the texture of fur) with its prediction.
 The background regions (sky, grass, walls) appear mostly blue, confirming that the network
 is not relying on context to make its decision for these samples.
-
-### Analytical Question 2.3 – What do the incorrect-prediction heatmaps show?
 
 **Analytical Question 2.3 – What do the incorrect-prediction heatmaps show?**
 
@@ -267,72 +182,21 @@ In all these cases, GradCAM makes the misclassification interpretable: instead o
 knowing the model was wrong, we can see *why* it was wrong and which part of the image
 it was focused on when it made its error.
 
-### Summary of Results
-
-## Summary of Results
-
-| Task | Metric | Value |
-|------|--------|-------|
-| 1A – MNIST CNN | Test accuracy | *97.31%* |
-| 1A – MNIST CNN | Trainable parameters | < 50 000 |
-| 1B – C-MNIST | Biased test accuracy | *96.75%* |
-| 1B – C-MNIST | Unbiased test accuracy | *36.64%* |
-| 2A – STL-10 (frozen backbone) | Test accuracy | *94.92* |
-
-All code is available in the public GitHub repository linked on the first page of the report.
-
 ## Results
 
-### Result 1: 0. Imports and Environment Setup
-
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Device: cpu
-PyTorch version: 2.11.0+cpu
-```
-</details>
-
-### Result 2: 1A-1: Data Loading
+### Result 1: 1A-1: Data Loading
 
 **Key Metrics**
 
 - Train: 54,000  |  Val: 6,000  |  Test: 10,000
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Train: 54,000  |  Val: 6,000  |  Test: 10,000
-```
-</details>
-
-### Result 3: 1A-2: Model Architecture
+### Result 2: 1A-2: Model Architecture
 
 **Key Metrics**
 
 - Total trainable parameters: 8,650  (limit: 50,000)
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Total trainable parameters: 8,650  (limit: 50,000)
-
-  features.0                     Conv2d(1, 8, kernel_size=(3, 3), stride=(1, 1))
-  features.2                     MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-  features.3                     Conv2d(8, 16, kernel_size=(3, 3), stride=(1, 1))
-  features.5                     MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
-  features.6                     Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
-  features.8                     AdaptiveAvgPool2d(output_size=1)
-  classifier.0                   Linear(in_features=32, out_features=64, bias=True)
-  classifier.2                   Dropout(p=0.3, inplace=False)
-  classifier.3                   Linear(in_features=64, out_features=10, bias=True)
-```
-</details>
-
-### Result 4: 1A-3: Training
+### Result 3: 1A-3: Training
 
 **Key Metrics**
 
@@ -352,71 +216,33 @@ Total trainable parameters: 8,650  (limit: 50,000)
 - Epoch 14/15  train_loss=0.1252  val_loss=0.1031  train_acc=96.28%  val_acc=96.92%
 - Epoch 15/15  train_loss=0.1229  val_loss=0.1031  train_acc=96.44%  val_acc=96.95%
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Epoch 01/15  train_loss=1.2214  val_loss=0.4862  train_acc=56.94%  val_acc=86.18%
-Epoch 02/15  train_loss=0.4256  val_loss=0.2734  train_acc=87.13%  val_acc=91.72%
-Epoch 03/15  train_loss=0.2995  val_loss=0.2133  train_acc=91.06%  val_acc=93.38%
-Epoch 04/15  train_loss=0.2475  val_loss=0.1734  train_acc=92.69%  val_acc=94.83%
-Epoch 05/15  train_loss=0.2160  val_loss=0.1721  train_acc=93.71%  val_acc=94.60%
-Epoch 06/15  train_loss=0.1857  val_loss=0.1494  train_acc=94.61%  val_acc=95.50%
-Epoch 07/15  train_loss=0.1792  val_loss=0.1444  train_acc=94.67%  val_acc=95.70%
-Epoch 08/15  train_loss=0.1642  val_loss=0.1316  train_acc=95.18%  val_acc=96.00%
-Epoch 09/15  train_loss=0.1580  val_loss=0.1308  train_acc=95.38%  val_acc=96.12%
-Epoch 10/15  train_loss=0.1494  val_loss=0.1161  train_acc=95.61%  val_acc=96.53%
-Epoch 11/15  train_loss=0.1378  val_loss=0.1132  train_acc=96.00%  val_acc=96.53%
-Epoch 12/15  train_loss=0.1336  val_loss=0.1136  train_acc=96.02%  val_acc=96.50%
-Epoch 13/15  train_loss=0.1325  val_loss=0.1035  train_acc=96.20%  val_acc=96.83%
-Epoch 14/15  train_loss=0.1252  val_loss=0.1031  train_acc=96.28%  val_acc=96.92%
-Epoch 15/15  train_loss=0.1229  val_loss=0.1031  train_acc=96.44%  val_acc=96.95%
-```
-</details>
-
-### Result 5: 1A-3: Training
+### Result 4: 1A-3: Training
 
 **Key Metrics**
 
 - Final test accuracy: 97.31%
 
-<details>
-<summary>Full Output Log</summary>
+### Result 5: 1A-4: Learning Curves
 
-```text
-Final test accuracy: 97.31%
-```
-</details>
+**Output Snippet**
 
-### Result 6: 1A-4: Learning Curves
-
-<details>
-<summary>Full Output Log</summary>
-
-```text
-<Figure size 1300x400 with 2 Axes>
-```
-</details>
+- <Figure size 1300x400 with 2 Axes>
 
 **Figures**
 
 ![1A-4: Learning Curves](readme_images/cell_015_img_1.png)
 
-### Result 7: 1A-5: First-Layer Filter Visualisation
+### Result 6: 1A-5: First-Layer Filter Visualisation
 
-<details>
-<summary>Full Output Log</summary>
+**Output Snippet**
 
-```text
-<Figure size 1400x250 with 9 Axes>
-```
-</details>
+- <Figure size 1400x250 with 9 Axes>
 
 **Figures**
 
 ![1A-5: First-Layer Filter Visualisation](readme_images/cell_018_img_1.png)
 
-### Result 8: 1B-1: Data Loading
+### Result 7: 1B-1: Data Loading
 
 **Key Metrics**
 
@@ -424,60 +250,29 @@ Final test accuracy: 97.31%
 - Test  (biased):        torch.Size([10000, 3, 28, 28])
 - Test  (unbiased):      torch.Size([10000, 3, 28, 28])
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Train (biased):        torch.Size([60000, 3, 28, 28])  labels: torch.Size([60000])
-Test  (biased):        torch.Size([10000, 3, 28, 28])
-Test  (unbiased):      torch.Size([10000, 3, 28, 28])
-Pixel range: [0.00, 1.00]
-```
-</details>
-
-### Result 9: 1B-1: Data Loading
+### Result 8: 1B-1: Data Loading
 
 **Key Metrics**
 
 - Train: 54,000  Val: 6,000  Biased test: 10,000  Unbiased test: 10,000
 
-<details>
-<summary>Full Output Log</summary>
+### Result 9: 1B-2: Visualise the Colour-Digit Bias
 
-```text
-Train: 54,000  Val: 6,000  Biased test: 10,000  Unbiased test: 10,000
-```
-</details>
+**Output Snippet**
 
-### Result 10: 1B-2: Visualise the Colour-Digit Bias
-
-<details>
-<summary>Full Output Log</summary>
-
-```text
-<Figure size 1600x400 with 20 Axes>
-```
-</details>
+- <Figure size 1600x400 with 20 Axes>
 
 **Figures**
 
 ![1B-2: Visualise the Colour-Digit Bias](readme_images/cell_025_img_1.png)
 
-### Result 11: 1B-3: Model – RGB Adaptation
+### Result 10: 1B-3: Model – RGB Adaptation
 
 **Key Metrics**
 
 - C-MNIST model parameters: 8,794
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-C-MNIST model parameters: 8,794
-```
-</details>
-
-### Result 12: 1B-4: Training on Biased C-MNIST
+### Result 11: 1B-4: Training on Biased C-MNIST
 
 **Key Metrics**
 
@@ -497,74 +292,30 @@ C-MNIST model parameters: 8,794
 - Epoch 14/15  train_loss=0.1429  val_loss=0.1363  train_acc=96.32%  val_acc=96.08%
 - Epoch 15/15  train_loss=0.1361  val_loss=0.1305  train_acc=96.44%  val_acc=96.32%
 
-<details>
-<summary>Full Output Log</summary>
+### Result 12: 1B-4: Training on Biased C-MNIST
 
-```text
-Epoch 01/15  train_loss=0.7884  val_loss=0.4109  train_acc=82.03%  val_acc=93.70%
-Epoch 02/15  train_loss=0.3824  val_loss=0.3348  train_acc=94.16%  val_acc=94.48%
-Epoch 03/15  train_loss=0.3354  val_loss=0.3037  train_acc=94.81%  val_acc=94.57%
-Epoch 04/15  train_loss=0.3016  val_loss=0.2826  train_acc=94.95%  val_acc=94.62%
-Epoch 05/15  train_loss=0.2735  val_loss=0.2526  train_acc=95.10%  val_acc=94.83%
-Epoch 06/15  train_loss=0.2473  val_loss=0.2326  train_acc=95.30%  val_acc=94.97%
-Epoch 07/15  train_loss=0.2296  val_loss=0.2255  train_acc=95.41%  val_acc=95.07%
-Epoch 08/15  train_loss=0.2132  val_loss=0.2026  train_acc=95.51%  val_acc=95.18%
-Epoch 09/15  train_loss=0.1979  val_loss=0.1847  train_acc=95.66%  val_acc=95.40%
-Epoch 10/15  train_loss=0.1808  val_loss=0.1649  train_acc=95.81%  val_acc=95.62%
-Epoch 11/15  train_loss=0.1641  val_loss=0.1568  train_acc=96.04%  val_acc=95.72%
-Epoch 12/15  train_loss=0.1555  val_loss=0.1509  train_acc=96.14%  val_acc=95.75%
-Epoch 13/15  train_loss=0.1501  val_loss=0.1419  train_acc=96.19%  val_acc=95.98%
-Epoch 14/15  train_loss=0.1429  val_loss=0.1363  train_acc=96.32%  val_acc=96.08%
-Epoch 15/15  train_loss=0.1361  val_loss=0.1305  train_acc=96.44%  val_acc=96.32%
-```
-</details>
+**Output Snippet**
 
-### Result 13: 1B-4: Training on Biased C-MNIST
-
-<details>
-<summary>Full Output Log</summary>
-
-```text
-<Figure size 1300x400 with 2 Axes>
-```
-</details>
+- <Figure size 1300x400 with 2 Axes>
 
 **Figures**
 
 ![1B-4: Training on Biased C-MNIST](readme_images/cell_030_img_1.png)
 
-### Result 14: 1B-5: Evaluation on Both Test Sets
+### Result 13: 1B-5: Evaluation on Both Test Sets
 
 **Key Metrics**
 
 - Accuracy on biased test set:   96.75%
 - Accuracy on unbiased test set: 36.64%
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Accuracy on biased test set:   96.75%
-Accuracy on unbiased test set: 36.64%
-Performance drop:              60.11 percentage points
-```
-</details>
-
-### Result 15: 2A-1: Data Loading – STL-10
+### Result 14: 2A-1: Data Loading – STL-10
 
 **Key Metrics**
 
 - STL-10 train: 5,000  |  test: 8,000
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-STL-10 train: 5,000  |  test: 8,000
-```
-</details>
-
-### Result 16: 2A-2: Load Pre-trained ResNet-18 and Freeze Backbone
+### Result 15: 2A-2: Load Pre-trained ResNet-18 and Freeze Backbone
 
 **Key Metrics**
 
@@ -572,19 +323,7 @@ STL-10 train: 5,000  |  test: 8,000
 - Trainable parameters: 513,000  (original FC only)
 - New trainable parameters: 5,130
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Frozen parameters:    11,176,512
-Trainable parameters: 513,000  (original FC only)
-
-Replaced FC: Linear(512 -> 10)
-New trainable parameters: 5,130
-```
-</details>
-
-### Result 17: 2A-3: Training the Classification Head
+### Result 16: 2A-3: Training the Classification Head
 
 **Key Metrics**
 
@@ -599,80 +338,39 @@ New trainable parameters: 5,130
 - Epoch 09/10  train_loss=0.1441  train_acc=95.86%
 - Epoch 10/10  train_loss=0.1361  train_acc=96.12%
 
-<details>
-<summary>Full Output Log</summary>
-
-```text
-Epoch 01/10  train_loss=0.7496  train_acc=81.64%
-Epoch 02/10  train_loss=0.2741  train_acc=93.02%
-Epoch 03/10  train_loss=0.2181  train_acc=93.68%
-Epoch 04/10  train_loss=0.1806  train_acc=94.76%
-Epoch 05/10  train_loss=0.1711  train_acc=94.88%
-Epoch 06/10  train_loss=0.1609  train_acc=95.12%
-Epoch 07/10  train_loss=0.1490  train_acc=95.66%
-Epoch 08/10  train_loss=0.1504  train_acc=95.52%
-Epoch 09/10  train_loss=0.1441  train_acc=95.86%
-Epoch 10/10  train_loss=0.1361  train_acc=96.12%
-```
-</details>
-
-### Result 18: 2A-3: Training the Classification Head
+### Result 17: 2A-3: Training the Classification Head
 
 **Key Metrics**
 
 - STL-10 test accuracy (frozen backbone + linear head): 94.92%
 
-<details>
-<summary>Full Output Log</summary>
+### Result 18: 2A-3: Training the Classification Head
 
-```text
-STL-10 test accuracy (frozen backbone + linear head): 94.92%
-```
-</details>
+**Output Snippet**
 
-### Result 19: 2A-3: Training the Classification Head
-
-<details>
-<summary>Full Output Log</summary>
-
-```text
-<Figure size 1300x400 with 2 Axes>
-```
-</details>
+- <Figure size 1300x400 with 2 Axes>
 
 **Figures**
 
 ![2A-3: Training the Classification Head](readme_images/cell_043_img_1.png)
 
-### Result 20: 2B-1: GradCAM Implementation
+### Result 19: 2B-1: GradCAM Implementation
 
-<details>
-<summary>Full Output Log</summary>
+**Output Snippet**
 
-```text
-GradCAM ready
-```
-</details>
+- GradCAM ready
 
-### Result 21: 2B-2: Collect 4 Test Images (2 correct, 2 incorrect)
+### Result 20: 2B-2: Collect 4 Test Images (2 correct, 2 incorrect)
 
-<details>
-<summary>Full Output Log</summary>
+**Output Snippet**
 
-```text
-Collected 2 correct and 2 incorrect samples
-```
-</details>
+- Collected 2 correct and 2 incorrect samples
 
-### Result 22: 2B-3: Generate and Display GradCAM Heatmaps
+### Result 21: 2B-3: Generate and Display GradCAM Heatmaps
 
-<details>
-<summary>Full Output Log</summary>
+**Output Snippet**
 
-```text
-<Figure size 1800x1200 with 12 Axes>
-```
-</details>
+- <Figure size 1800x1200 with 12 Axes>
 
 **Figures**
 
